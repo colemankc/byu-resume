@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYU Shot Tracker</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; text-align: center; background-color: #002e5d; color: white; padding: 50px; }
+        .container { background: white; color: #002e5d; padding: 30px; border-radius: 15px; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        h1 { margin-bottom: 20px; }
+        .stats { font-size: 24px; margin: 20px 0; }
+        button { padding: 15px 30px; font-size: 18px; margin: 10px; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        .make { background-color: #28a745; color: white; }
+        .miss { background-color: #dc3545; color: white; }
+        .reset { background-color: #6c757d; color: white; display: block; margin: 20px auto; }
+        button:hover { opacity: 0.8; }
+        a { color: #fdfdfd; text-decoration: none; margin-top: 20px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>🏀 BYU Manager Shot Tracker</h1>
+    <div class="container">
+        <div class="stats">
+            Makes: <span id="makes">0</span> | Misses: <span id="misses">0</span>
+        </div>
+        <div class="stats">
+            Shooting %: <span id="percent">0%</span>
+        </div>
+        <button class="make" onclick="recordShot(true)">MAKE</button>
+        <button class="miss" onclick="recordShot(false)">MISS</button>
+        <button class="reset" onclick="resetStats()">Reset Practice</button>
+    </div>
+    <br>
+    <a href="scratch.html">← Back to Manager Life</a>
+
+    <script>
+        let makes = 0;
+        let misses = 0;
+
+        function recordShot(isMake) {
+            if (isMake) makes++;
+            else misses++;
+            updateDisplay();
+        }
+
+        function resetStats() {
+            makes = 0;
+            misses = 0;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById('makes').innerText = makes;
+            document.getElementById('misses').innerText = misses;
+            let total = makes + misses;
+            let percentage = total === 0 ? 0 : Math.round((makes / total) * 100);
+            document.getElementById('percent').innerText = percentage + "%";
+        }
+    </script>
+</body>
+</html>
