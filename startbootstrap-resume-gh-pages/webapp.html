@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BYU Shot Tracker</title>
+    <style>
+        body { text-align: center; font-family: Arial; background: #002E5D; color: white; padding: 50px; }
+        .btn { padding: 20px 40px; font-size: 24px; margin: 10px; border-radius: 10px; border: none; cursor: pointer; }
+        #stats { font-size: 40px; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Practice Shot Tracker</h1>
+    <div id="stats">0 / 0 (0%)</div>
+    <button class="btn" style="background: #28a745; color: white;" onclick="track(true)">MADE</button>
+    <button class="btn" style="background: #dc3545; color: white;" onclick="track(false)">MISSED</button>
+    <p><a href="scratch.html" style="color: white;">Back to Scratch Page</a></p>
+
+    <script>
+        let made = 0, total = 0;
+        function track(hit) {
+            total++;
+            if(hit) made++;
+            let pct = Math.round((made / total) * 100);
+            document.getElementById('stats').innerText = `${made} / ${total} (${pct}%)`;
+        }
+    </script>
+</body>
+</html>

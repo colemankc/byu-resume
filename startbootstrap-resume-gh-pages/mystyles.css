@@ -1,0 +1,12 @@
+body {
+    background-color: #002E5D; /* BYU Navy Blue */
+    color: white; /* Font Color requirement */
+    font-family: 'Arial', sans-serif; /* Font Family requirement */
+}
+
+.content-box {
+    border: 2px solid white; /* Div requirement */
+    padding: 20px;
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
